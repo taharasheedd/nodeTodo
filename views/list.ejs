@@ -1,0 +1,35 @@
+<%- include("header") -%>
+
+    <div class="d-flex justify-content-center " style="margin-top:5%">
+        <div class="card rounded border-2" style="width: 75% ; ">
+            <div class="card-body">
+                <h3 class="text-center">It's
+                    <%= day %> !
+                </h3>
+                <ul>
+                    <% for (var i=0; i<newTask.length; i++) { %>
+                        <li>
+                            <div class="row">
+                                <div class="text-left col-9">
+                                    <%=newTask[i].name %>
+                                </div>
+                                <div class=" col-3">
+                                    <form action="/delete" method="POST">
+                                        <input type="checkbox" id="delete" value="<%=newTask[i]._id%>" name="delete" onChange="this.form.submit()">
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <%}%>
+                </ul>
+                <form action="/" method="POST">
+                    <label for="task"> Enter a Task </label>
+                    <input type="text" name="task" id="task" placeholder="Enter Task" style="width:100%" /><br /><br>
+                    <button style="background-color: pink;color:dodgerblue; width: 100%;" class="btn btn-lg " type="submit" name="button">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <%- include("footer") -%>
